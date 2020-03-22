@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "beyondcode/nova-tinker-tool": "^1.1",
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^1.0",
         "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
@@ -19,7 +20,10 @@
         "laravel/telescope": "^3.2",
         "laravel/tinker": "^2.0",
         "mad-web/nova-horizon-link": "^4.0",
-        "mad-web/nova-telescope-link": "^3.0"
+        "mad-web/nova-telescope-link": "^3.0",
+        "sbine/route-viewer": "^0.0.6",
+        "skydiver/nova-update-card": "^1.4",
+        "vink/nova-cache-card": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

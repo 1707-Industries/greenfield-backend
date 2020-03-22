@@ -2,12 +2,18 @@
 
 namespace App\Providers;
 
+use Beyondcode\TinkerTool\Tinker;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use MadWeb\NovaHorizonLink\HorizonLink;
 use MadWeb\NovaTelescopeLink\TelescopeLink;
+use NovaCards\SystemInformationCard\SystemInformationCard;
+use Sbine\RouteViewer\RouteViewer;
+use Skydiver\NovaUpdateCard\LaravelUpdateCard;
+use Skydiver\NovaUpdateCard\NovaUpdateCard;
+use Vink\NovaCacheCard\CacheCard;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -33,6 +39,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new TelescopeLink,
             new HorizonLink,
+            new Tinker,
+            new RouteViewer,
         ];
     }
 
@@ -81,7 +89,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+            (new LaravelUpdateCard)->width('1/2'),
+            (new NovaUpdateCard)->width('1/2'),
+            (new CacheCard)->width('1/2'),
         ];
     }
 
