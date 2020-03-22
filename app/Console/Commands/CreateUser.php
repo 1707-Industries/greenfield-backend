@@ -47,7 +47,11 @@ class CreateUser extends Command
             'email_verified_at' => Carbon::now(),
         ];
 
-        (new User($userData))->save();
+        $isAdmin = $this->confirm('Is this user an admin?');
+
+        $user = new User($userData);
+        $user->is_admin = $isAdmin;
+        $user->save();
 
         $this->info('User Created');
     }
