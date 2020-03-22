@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f357e3710fdf1bf7be6916f8a168a58b",
+    "content-hash": "bbe327719c00144b119d016c803ce235",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1581,6 +1581,79 @@
             "time": "2020-03-20T18:11:43+00:00"
         },
         {
+            "name": "laravel/horizon",
+            "version": "v4.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/horizon.git",
+                "reference": "64bbf42d5718ed62f31bf64974f3c68aa3156276"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/64bbf42d5718ed62f31bf64974f3c68aa3156276",
+                "reference": "64bbf42d5718ed62f31bf64974f3c68aa3156276",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/chronos": "^1.0",
+                "ext-json": "*",
+                "ext-pcntl": "*",
+                "ext-posix": "*",
+                "illuminate/contracts": "^7.0",
+                "illuminate/queue": "^7.0",
+                "illuminate/support": "^7.0",
+                "php": "^7.2",
+                "ramsey/uuid": "^3.5",
+                "symfony/error-handler": "^5.0",
+                "symfony/process": "^5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^5.0",
+                "phpunit/phpunit": "^8.0",
+                "predis/predis": "^1.1"
+            },
+            "suggest": {
+                "ext-redis": "Required to use the Redis PHP driver.",
+                "predis/predis": "Required when not using the Redis PHP driver (^1.1)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Horizon\\HorizonServiceProvider"
+                    ],
+                    "aliases": {
+                        "Horizon": "Laravel\\Horizon\\Horizon"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Horizon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Dashboard and code-driven configuration for Laravel queues.",
+            "keywords": [
+                "laravel",
+                "queue"
+            ],
+            "time": "2020-03-17T17:33:48+00:00"
+        },
+        {
             "name": "laravel/nova",
             "version": "v3.1.0",
             "source": {
@@ -2268,6 +2341,60 @@
                 "server"
             ],
             "time": "2019-07-13T18:58:26+00:00"
+        },
+        {
+            "name": "mad-web/nova-horizon-link",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mad-web/nova-horizon-link.git",
+                "reference": "5176e6ededbe57af5cdeaeab2a8eef02ee5d7158"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mad-web/nova-horizon-link/zipball/5176e6ededbe57af5cdeaeab2a8eef02ee5d7158",
+                "reference": "5176e6ededbe57af5cdeaeab2a8eef02ee5d7158",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/horizon": "^3.0|^4.0",
+                "laravel/nova": "*",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MadWeb\\NovaHorizonLink\\LinkServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MadWeb\\NovaHorizonLink\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mad Web",
+                    "email": "madweb.dev@gmail.com",
+                    "homepage": "https://github.com/mad-web",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Smart Link for Laravel Nova to Horizon Dashboard.",
+            "homepage": "https://github.com/mad-web/nova-horizon-link",
+            "keywords": [
+                "horizon",
+                "laravel",
+                "link",
+                "nova"
+            ],
+            "time": "2020-03-04T17:39:19+00:00"
         },
         {
             "name": "mad-web/nova-telescope-link",

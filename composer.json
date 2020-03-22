@@ -13,10 +13,12 @@
         "fruitcake/laravel-cors": "^1.0",
         "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
         "laravel/framework": "^7.0",
+        "laravel/horizon": "^4.0",
         "laravel/nova": "~3.0",
         "laravel/passport": "^8.4",
         "laravel/telescope": "^3.2",
         "laravel/tinker": "^2.0",
+        "mad-web/nova-horizon-link": "^4.0",
         "mad-web/nova-telescope-link": "^3.0"
     },
     "require-dev": {
