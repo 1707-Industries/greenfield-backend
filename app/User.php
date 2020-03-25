@@ -63,4 +63,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new Notifications\VerifyEmail);
     }
+
+    public function getAvatarUrlAttribute()
+    {
+        return sprintf('https://www.gravatar.com/avatar/%s?rating=x&d=identicon',
+            md5(trim(strtolower($this->email))));
+    }
 }

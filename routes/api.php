@@ -44,17 +44,23 @@ Route::group([], function(Router $router){
         });
     });
 
-    $router->get('me', [
-        'uses' => MeController::class . '@index',
-        'as' => 'me'
-    ]);
-
     $router->group([
         'middleware' => [
             'auth:api',
             'verified'
         ]
     ], function (Router $router) {
-        // proper routes
+        //
+    });
+
+    $router->group([
+        'middleware' => [
+            'auth:api',
+        ]
+    ], function (Router $router) {
+        $router->get('me', [
+            'uses' => MeController::class . '@index',
+            'as' => 'me'
+        ]);
     });
 });
