@@ -55,7 +55,7 @@ class ResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject(Lang::get('Reset Password Notification'))
+            ->subject(Lang::get('Reset Password'))
             ->line(Lang::get('You are receiving this email because we received a password reset request for your account.'))
             ->action(Lang::get('Reset Password'), sprintf('%s/reset-password/?%s', url(config('app.frontend_url')), build_query([
                 'token' => $this->token,

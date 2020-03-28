@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\SignupController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\MeController;
+use App\Http\Controllers\PasswordController;
 use Illuminate\Routing\Router;
 
 Route::group([], function(Router $router){
@@ -44,23 +45,22 @@ Route::group([], function(Router $router){
         });
     });
 
-    $router->group([
-        'middleware' => [
-            'auth:api',
-            'verified'
-        ]
-    ], function (Router $router) {
-        //
-    });
-
-    $router->group([
-        'middleware' => [
-            'auth:api',
-        ]
-    ], function (Router $router) {
+    $router->group(['middleware' => ['auth:api',]], function (Router $router) {
         $router->get('me', [
             'uses' => MeController::class . '@index',
-            'as' => 'me'
+            'as' => 'me.index'
         ]);
+
+        $router->group(['middleware' => ['verified']], function (Router $router) {
+            $router->patch('me', [
+                'uses' => MeController::class . '@update',
+                'as' => 'me.update',
+            ]);
+
+            $router->put('password', [
+                'uses' => PasswordController::class . '@update',
+                'as' => 'password.update',
+            ]);
+        });
     });
 });
