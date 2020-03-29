@@ -7,6 +7,7 @@ use App\Http\Requests\ForgotPasswordRequest;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Password;
 
 class ForgotPasswordController extends Controller
@@ -37,7 +38,7 @@ class ForgotPasswordController extends Controller
     {
         return response()->json([
             'status' => trans($response),
-        ]);
+        ])->setStatusCode(Response::HTTP_CREATED);
     }
 
     /**

@@ -14,7 +14,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
 
 class ResetPasswordController extends Controller
 {
