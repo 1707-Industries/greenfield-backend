@@ -8,6 +8,10 @@ use App\Http\Controllers\MeController;
 use App\Http\Controllers\PasswordController;
 use Illuminate\Routing\Router;
 
+Route::get('test', function(){
+    dd('cool');
+});
+
 Route::group([], function(Router $router){
     $router->group(['prefix' => 'auth'], function (Router $router) {
         $router->post('signup', [
