@@ -13,24 +13,24 @@
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^1.0",
         "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
-        "laravel/framework": "^7.0",
-        "laravel/horizon": "^4.0",
+        "laravel/framework": "^8.0",
+        "laravel/horizon": "^5.0",
         "laravel/nova": "~3.0",
-        "laravel/passport": "^8.4",
-        "laravel/telescope": "^3.2",
+        "laravel/passport": "^10.0",
+        "laravel/telescope": "^4.0",
         "laravel/tinker": "^2.0",
-        "mad-web/nova-horizon-link": "^4.0",
-        "mad-web/nova-telescope-link": "^3.0",
+        "mad-web/nova-horizon-link": "^5.0",
+        "mad-web/nova-telescope-link": "^4.0",
         "sbine/route-viewer": "^0.0.6",
         "skydiver/nova-update-card": "^1.4",
         "vink/nova-cache-card": "^1.0"
     },
     "require-dev": {
-        "facade/ignition": "^2.0",
+        "facade/ignition": "^2.3.6",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^4.1",
-        "phpunit/phpunit": "^8.5"
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.0"
     },
     "config": {
         "optimize-autoloader": true,
