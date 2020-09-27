@@ -9,7 +9,6 @@ use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use MadWeb\NovaHorizonLink\HorizonLink;
 use MadWeb\NovaTelescopeLink\TelescopeLink;
-use NovaCards\SystemInformationCard\SystemInformationCard;
 use Sbine\RouteViewer\RouteViewer;
 use Skydiver\NovaUpdateCard\LaravelUpdateCard;
 use Skydiver\NovaUpdateCard\NovaUpdateCard;
@@ -52,6 +51,20 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function register()
     {
         //
+    }
+
+    /**
+     * Configure the Nova authorization services.
+     *
+     * @return void
+     */
+    protected function authorization()
+    {
+        $this->gate();
+
+        Nova::auth(function ($request) {
+            return Gate::check('viewNova', [$request->user()]);
+        });
     }
 
     /**
