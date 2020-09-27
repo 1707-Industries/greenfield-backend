@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'domain' => env('TELESCOPE_DOMAIN', null),
+    'domain' => env('BACKOFFICE_URL', null),
 
     /*
     |--------------------------------------------------------------------------
