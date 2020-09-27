@@ -1,5 +1,6 @@
 <?php
 
+use App\AppInfo;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\SignupController;
@@ -8,8 +9,8 @@ use App\Http\Controllers\MeController;
 use App\Http\Controllers\PasswordController;
 use Illuminate\Routing\Router;
 
-Route::get('test', function(){
-    dd('cool');
+Route::get('/', function(){
+    return response()->json((new AppInfo)->getInfo());
 });
 
 Route::group([], function(Router $router){
