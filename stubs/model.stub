@@ -10,4 +10,6 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class {{ class }} extends Model
 {
     use HasFactory, SoftDeletes, LogsActivity;
+
+    protected static $logAttributes = ['*'];
 }
