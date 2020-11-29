@@ -8,12 +8,7 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\MeController;
 use App\Http\Controllers\PasswordController;
 use Illuminate\Routing\Router;
-
-Route::get('test', function(){
-    $user = \App\User::first();
-
-    dd($user->activityLog->toArray());
-});
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(){
     return response()->json((new AppInfo)->getInfo());
