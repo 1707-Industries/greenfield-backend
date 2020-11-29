@@ -73,6 +73,10 @@ class ActivityLog extends Resource
             Text::make('Causer Type')->onlyOnDetail(),
             Text::make('Causer ID', 'causer_id')->onlyOnDetail(),
             Text::make('Caused By', function() {
+                if (!$this->causer_id) {
+                    return '&mdash';
+                }
+
                 $path = sprintf('/resources/%s/%s',
                     Str::kebab(Str::plural(class_basename($this->causer_type))),
                     $this->causer_id
@@ -87,6 +91,10 @@ class ActivityLog extends Resource
             Text::make('Subject Type')->onlyOnDetail(),
             Text::make('Subject ID', 'subject_id')->onlyOnDetail(),
             Text::make('Subject', function() {
+                if (!$this->subject_id) {
+                    return '&mdash';
+                }
+
                 $path = sprintf('/resources/%s/%s',
                     Str::kebab(Str::plural(class_basename($this->subject_type))),
                     $this->subject_id
