@@ -65,7 +65,7 @@ class ActivityLog extends Resource
             }),
             Text::make('Causer Type')->onlyOnDetail(),
             Text::make('Causer ID', 'causer_id')->onlyOnDetail(),
-            Text::make('Causer', function() {
+            Text::make('Caused By', function() {
                 $path = sprintf('/resources/%s/%s',
                     Str::kebab(Str::plural(class_basename($this->causer_type))),
                     $this->causer_id
