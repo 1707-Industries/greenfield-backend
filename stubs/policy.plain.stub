@@ -3,6 +3,7 @@
 namespace {{ namespace }};
 
 use {{ namespacedUserModel }};
+use Illuminate\Auth\Access\Response;
 
 class {{ class }} extends Policy
 {

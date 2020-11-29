@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Policies\ActivityLogPolicy;
 use App\Policies\UserPolicy;
 use App\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
+use Spatie\Activitylog\Models\Activity;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -14,7 +16,9 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $policies = [];
+    protected $policies = [
+        Activity::class => ActivityLogPolicy::class,
+    ];
 
     /**
      * Register any authentication / authorization services.

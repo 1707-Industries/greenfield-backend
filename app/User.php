@@ -9,10 +9,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\HasApiTokens;
+use Spatie\Activitylog\Models\Activity;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, Notifiable, SoftDeletes;
+    use HasApiTokens, Notifiable, SoftDeletes, LogsActivity;
+
+    protected static $logAttributes = ['*'];
 
     /**
      * The attributes that are mass assignable.
@@ -69,5 +73,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return sprintf('https://www.gravatar.com/avatar/%s?rating=x&d=identicon',
             md5(trim(strtolower($this->email))));
+    }
+
+    public function activityLog()
+    {
+        return $this->morphMany(Activity::class, 'causer');
     }
 }
