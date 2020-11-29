@@ -3,7 +3,9 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -61,7 +63,38 @@ class ActivityLog extends Resource
                     $this->description
                 );
             }),
-            Code::make('Properties')->json(),
+            Text::make('Causer Type')->onlyOnDetail(),
+            Text::make('Causer ID', 'causer_id')->onlyOnDetail(),
+            Text::make('Causer', function() {
+                $path = sprintf('/resources/%s/%s',
+                    Str::kebab(Str::plural(class_basename($this->causer_type))),
+                    $this->causer_id
+                );
+
+                return sprintf('<strong><a href="%s">%s %s</a></strong>',
+                    $path,
+                    class_basename($this->causer_type),
+                    $this->causer_id
+                );
+            })->asHtml(),
+            Text::make('Subject Type')->onlyOnDetail(),
+            Text::make('Subject ID', 'subject_id')->onlyOnDetail(),
+            Text::make('Subject', function() {
+                $path = sprintf('/resources/%s/%s',
+                    Str::kebab(Str::plural(class_basename($this->subject_type))),
+                    $this->subject_id
+                );
+
+                return sprintf('<strong><a href="%s">%s %s</a></strong>',
+                    $path,
+                    class_basename($this->subject_type),
+                    $this->subject_id
+                );
+            })->asHtml(),
+            Text::make('Log Name')->onlyOnDetail(),
+            Text::make('Description')->onlyOnDetail(),
+            DateTime::make('Date', 'created_at'),
+            Code::make('Properties')->json()->onlyOnDetail(),
         ];
     }
 
