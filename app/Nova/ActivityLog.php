@@ -52,9 +52,10 @@ class ActivityLog extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make('Log', function(){
+            Text::make('Log', function () {
                 if ($this->causer_id) {
-                    return sprintf('%s -  %s was %s by %s %s (%s)',
+                    return sprintf(
+                        '%s -  %s was %s by %s %s (%s)',
                         $this->subject_type,
                         $this->subject_id,
                         $this->description,
@@ -64,7 +65,8 @@ class ActivityLog extends Resource
                     );
                 }
 
-                return sprintf('%s -  %s was %s by Anonymous',
+                return sprintf(
+                    '%s -  %s was %s by Anonymous',
                     $this->subject_type,
                     $this->subject_id,
                     $this->description
@@ -72,17 +74,19 @@ class ActivityLog extends Resource
             }),
             Text::make('Causer Type')->onlyOnDetail(),
             Text::make('Causer ID', 'causer_id')->onlyOnDetail(),
-            Text::make('Caused By', function() {
+            Text::make('Caused By', function () {
                 if (!$this->causer_id) {
                     return '&mdash';
                 }
 
-                $path = sprintf('/resources/%s/%s',
+                $path = sprintf(
+                    '/resources/%s/%s',
                     Str::kebab(Str::plural(class_basename($this->causer_type))),
                     $this->causer_id
                 );
 
-                return sprintf('<strong><a href="%s">%s %s</a></strong>',
+                return sprintf(
+                    '<strong><a href="%s">%s %s</a></strong>',
                     $path,
                     class_basename($this->causer_type),
                     $this->causer_id
@@ -90,17 +94,19 @@ class ActivityLog extends Resource
             })->asHtml(),
             Text::make('Subject Type')->onlyOnDetail(),
             Text::make('Subject ID', 'subject_id')->onlyOnDetail(),
-            Text::make('Subject', function() {
+            Text::make('Subject', function () {
                 if (!$this->subject_id) {
                     return '&mdash';
                 }
 
-                $path = sprintf('/resources/%s/%s',
+                $path = sprintf(
+                    '/resources/%s/%s',
                     Str::kebab(Str::plural(class_basename($this->subject_type))),
                     $this->subject_id
                 );
 
-                return sprintf('<strong><a href="%s">%s %s</a></strong>',
+                return sprintf(
+                    '<strong><a href="%s">%s %s</a></strong>',
                     $path,
                     class_basename($this->subject_type),
                     $this->subject_id

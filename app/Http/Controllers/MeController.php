@@ -8,7 +8,8 @@ use Illuminate\Http\Response;
 
 class MeController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $user = auth('api')->user();
 
         return new MeResource($user);

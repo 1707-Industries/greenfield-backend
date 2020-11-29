@@ -10,11 +10,11 @@ use App\Http\Controllers\PasswordController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function(){
+Route::get('/', function () {
     return response()->json((new AppInfo)->getInfo());
 });
 
-Route::group([], function(Router $router){
+Route::group([], function (Router $router) {
     $router->group(['prefix' => 'auth'], function (Router $router) {
         $router->post('signup', [
             'uses' => SignupController::class . '@store',

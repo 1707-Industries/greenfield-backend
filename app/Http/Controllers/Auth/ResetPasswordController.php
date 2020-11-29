@@ -31,9 +31,11 @@ class ResetPasswordController extends Controller
                 'email',
                 'password',
                 'token'
-            ]), function ($user, $password) {
+            ]),
+            function ($user, $password) {
                 $this->resetPassword($user, $password);
-            });
+            }
+        );
 
         return $response == Password::PASSWORD_RESET
             ? $this->sendResetResponse($response)

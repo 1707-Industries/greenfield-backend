@@ -2,7 +2,8 @@
 
 namespace App;
 
-class AppInfo {
+class AppInfo
+{
 
     public function getInfo()
     {
@@ -10,5 +11,4 @@ class AppInfo {
             'maintenance_mode' => app()->isDownForMaintenance(),
         ];
     }
-
 }

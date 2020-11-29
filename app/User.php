@@ -52,7 +52,8 @@ class User extends Authenticatable implements MustVerifyEmail
      * @param $password
      * @property string password
      */
-    public function setPasswordAttribute($password) :void {
+    public function setPasswordAttribute($password) :void
+    {
         $this->attributes['password'] = Hash::make($password);
     }
 
@@ -71,8 +72,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getAvatarUrlAttribute()
     {
-        return sprintf('https://www.gravatar.com/avatar/%s?rating=x&d=identicon',
-            md5(trim(strtolower($this->email))));
+        return sprintf(
+            'https://www.gravatar.com/avatar/%s?rating=x&d=identicon',
+            md5(trim(strtolower($this->email)))
+        );
     }
 
     public function activityLog()

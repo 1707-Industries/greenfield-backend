@@ -9,7 +9,8 @@ use App\User;
 
 class SignupController extends Controller
 {
-    public function store(SignupStoreRequest $request) {
+    public function store(SignupStoreRequest $request)
+    {
         $user = new User($request->only([
             'first_name',
             'surname',
@@ -20,6 +21,5 @@ class SignupController extends Controller
         $user->save();
 
         event(new Registered($user));
-
     }
 }
