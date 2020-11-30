@@ -13,7 +13,7 @@ class CreateUser extends Command
      *
      * @var string
      */
-    protected $signature = 'create-user';
+    protected $signature = 'create-user {--firstname=} {--surname=} {--email=} {--password=} {--admin}';
 
     /**
      * The console command description.
@@ -40,14 +40,14 @@ class CreateUser extends Command
     public function handle()
     {
         $userData = [
-            'first_name' => $this->ask('First Name'),
-            'surname' => $this->ask('Surname'),
-            'email' => $this->ask('Email Address'),
-            'password' => $this->secret('Password'),
+            'first_name' => $this->option('firstname') ?? $this->ask('First Name'),
+            'surname' => $this->option('surname') ?? $this->ask('Surname'),
+            'email' => $this->option('email') ?? $this->ask('Email Address'),
+            'password' => $this->option('password') ?? $this->secret('Password'),
             'email_verified_at' => Carbon::now(),
         ];
 
-        $isAdmin = $this->confirm('Is this user an admin?');
+        $isAdmin = $this->option('admin') ?? $this->confirm('Is this user an admin?');
 
         $user = new User($userData);
         $user->is_admin = $isAdmin;
