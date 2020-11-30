@@ -21,7 +21,7 @@
         "laravel/tinker": "^2.0",
         "mad-web/nova-horizon-link": "^5.0",
         "mad-web/nova-telescope-link": "^4.0",
-        "sbine/route-viewer": "^0.0.6",
+        "sbine/route-viewer": "^0.0.7",
         "skydiver/nova-update-card": "^1.4",
         "spatie/laravel-activitylog": "^3.16",
         "vink/nova-cache-card": "^1.0"
