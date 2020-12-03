@@ -11,7 +11,7 @@
         "php": "^7.2",
         "beyondcode/nova-tinker-tool": "^1.1",
         "fideloper/proxy": "^4.0",
-        "fruitcake/laravel-cors": "^1.0",
+        "fruitcake/laravel-cors": "^2.0",
         "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
         "laravel/framework": "^8.0",
         "laravel/horizon": "^5.0",
