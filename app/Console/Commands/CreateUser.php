@@ -44,13 +44,13 @@ class CreateUser extends Command
             'surname' => $this->option('surname') ?? $this->ask('Surname'),
             'email' => $this->option('email') ?? $this->ask('Email Address'),
             'password' => $this->option('password') ?? $this->secret('Password'),
-            'email_verified_at' => Carbon::now(),
         ];
 
         $isAdmin = $this->option('admin') ?? $this->confirm('Is this user an admin?');
 
         $user = new User($userData);
         $user->is_admin = $isAdmin;
+        $user->email_verified_at = Carbon::now();
         $user->save();
 
         $this->info('User Created');
