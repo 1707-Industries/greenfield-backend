@@ -76,7 +76,7 @@ class ActivityLog extends Resource
             Text::make('Causer ID', 'causer_id')->onlyOnDetail(),
             Text::make('Caused By', function () {
                 if (!$this->causer_id) {
-                    return '&mdash';
+                    return '&mdash;';
                 }
 
                 $path = sprintf(
@@ -96,7 +96,7 @@ class ActivityLog extends Resource
             Text::make('Subject ID', 'subject_id')->onlyOnDetail(),
             Text::make('Subject', function () {
                 if (!$this->subject_id) {
-                    return '&mdash';
+                    return '&mdash;';
                 }
 
                 $path = sprintf(
