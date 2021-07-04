@@ -12,41 +12,45 @@ use Laravel\Passport\HasApiTokens;
 use Spatie\Activitylog\Models\Activity;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use HasApiTokens, Notifiable, SoftDeletes, LogsActivity;
 
+    /**
+     * @var string[]
+     */
     protected static $logAttributes = ['*'];
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+     * @var string[]
      */
-    protected $fillable = [
-        'first_name',
-        'surname',
-        'email',
-        'password',
-    ];
+    protected static $guarded = [];
+
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
+     * @var string[]
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
      * The attributes that should be cast to native types.
      *
-     * @var array
+     * @var string[]
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return trim(sprintf('%s %s (%s)', $this->first_name, $this->surname, $this->email));
+    }
 
     /**
      * @param $password

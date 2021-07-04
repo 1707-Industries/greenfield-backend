@@ -12,4 +12,6 @@ class {{ class }} extends Model
     use HasFactory, SoftDeletes, LogsActivity;
 
     protected static $logAttributes = ['*'];
+
+    protected static $guarded = [];
 }
