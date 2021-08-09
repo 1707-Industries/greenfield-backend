@@ -65,7 +65,10 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DATABASE_URL'),
+            'username' => env('DB_USERNAME'),
+            'database' => env('DB_DATABASE'),
+            'password' => env('DB_PASSWORD'),
+            'host' => env('DB_HOST'),
             'port' => env('DB_PORT', '5432'),
             'charset' => 'utf8',
             'prefix' => '',
