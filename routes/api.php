@@ -4,11 +4,19 @@ use App\AppInfo;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\SignupController;
+use App\Http\Controllers\Auth\ThirdPartyController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\MeController;
 use App\Http\Controllers\PasswordController;
 use Illuminate\Routing\Router;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
+
+Route::get('test', function () {
+    $user = \App\User::first();
+
+    dd($user->toArray());
+});
 
 Route::get('/', function () {
     return response()->json((new AppInfo)->getInfo());
@@ -30,6 +38,21 @@ Route::group([], function (Router $router) {
            'uses' => ResetPasswordController::class . '@reset',
            'as' => 'auth.reset-password',
         ]);
+
+        // We need to enable session middleware here for the twitter auth flow
+        $router->group(['prefix' => 'third-party', 'middleware' => [
+            StartSession::class,
+        ]], function (Router $router) {
+            $router->get('{provider}/redirect', [
+                'as' => 'social.redirect',
+                'uses' => ThirdPartyController::class . '@redirect',
+            ]);
+
+            $router->get('{provider}/callback', [
+                'as' => 'social.redirect',
+                'uses' => ThirdPartyController::class . '@callback',
+            ]);
+        });
     });
 
     $router->group(['prefix' => 'verify-email'], function (Router $router) {
